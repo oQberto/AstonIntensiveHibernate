@@ -1,0 +1,9 @@
+spring:
+  application:
+      name: AstonIntensiveHibernate
+  config:
+    import: optional:secrets.yml
+
+  datasource:
+    name: jdbc:postgresql://localhost:5432/shop
+
