@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS manufacturer
 CREATE TABLE IF NOT EXISTS country_of_origin
 (
     id         BIGSERIAL PRIMARY KEY,
-    short_name CHAR(3)  NOT NULL UNIQUE,
+    short_name CHAR(3)      NOT NULL UNIQUE,
     full_name  VARCHAR(128) NOT NULL UNIQUE
 );
 
@@ -29,29 +29,6 @@ CREATE TABLE IF NOT EXISTS item
 );
 
 --changeset alexander_ermakov:4
-CREATE TABLE IF NOT EXISTS item_attribute
-(
-    id   BIGSERIAL PRIMARY KEY,
-    name VARCHAR(256) NOT NULL UNIQUE
-);
-
---changeset alexander_ermakov:5
-CREATE TABLE IF NOT EXISTS item_attribute_value
-(
-    id   BIGSERIAL PRIMARY KEY,
-    name VARCHAR(256) NOT NULL UNIQUE
-);
-
---changeset alexander_ermakov:6
-CREATE TABLE IF NOT EXISTS item_item_attribute
-(
-    item_id                 BIGINT REFERENCES item (id),
-    item_attribute_id       BIGINT REFERENCES item_attribute (id),
-    item_attribute_value_id BIGINT REFERENCES item_attribute_value (id),
-    PRIMARY KEY (item_id, item_attribute_id)
-);
-
---changeset alexander_ermakov:7
 CREATE TABLE IF NOT EXISTS users
 (
     id       BIGSERIAL PRIMARY KEY,
@@ -61,13 +38,43 @@ CREATE TABLE IF NOT EXISTS users
     role     VARCHAR(64)  NOT NULL
 );
 
---changeset alexander_ermakov:8
+--changeset alexander_ermakov:5
 CREATE TABLE IF NOT EXISTS orders
 (
     id      BIGSERIAL PRIMARY KEY,
     user_id BIGINT REFERENCES users (id) ON DELETE CASCADE,
     item_id BIGINT REFERENCES item (id) ON DELETE CASCADE,
-    amount  NUMERIC,
     status  VARCHAR(64) NOT NULL,
     time    TIMESTAMP   NOT NULL
+);
+
+--changeset alexander_ermakov:6
+CREATE TABLE IF NOT EXISTS item_order
+(
+    item_id  BIGINT REFERENCES item (id),
+    order_id BIGINT REFERENCES orders (id),
+    PRIMARY KEY (item_id, order_id)
+);
+
+--changeset alexander_ermakov:7
+CREATE TABLE IF NOT EXISTS item_attribute
+(
+    id   BIGSERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL UNIQUE
+);
+
+--changeset alexander_ermakov:8
+CREATE TABLE IF NOT EXISTS item_attribute_value
+(
+    id   BIGSERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL UNIQUE
+);
+
+--changeset alexander_ermakov:9
+CREATE TABLE IF NOT EXISTS item_item_attribute
+(
+    item_id                 BIGINT REFERENCES item (id),
+    item_attribute_id       BIGINT REFERENCES item_attribute (id),
+    item_attribute_value_id BIGINT REFERENCES item_attribute_value (id),
+    PRIMARY KEY (item_id, item_attribute_id)
 );
