@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.EnumType.STRING;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +21,7 @@ public class Manufacturer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Enumerated(STRING)
     @Column(name = "name", nullable = false, unique = true)
     ManufacturerName manufacturerName;
 
