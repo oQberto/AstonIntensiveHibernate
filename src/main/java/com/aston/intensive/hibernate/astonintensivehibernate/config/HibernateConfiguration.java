@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -30,15 +29,6 @@ public class HibernateConfiguration {
         localSessionFactoryBean.setHibernateProperties(hibernateProperties());
 
         return localSessionFactoryBean;
-    }
-
-    @Bean
-    public HibernateTransactionManager transactionManager() {
-        var txManager = new HibernateTransactionManager();
-
-        txManager.setSessionFactory(sessionFactory().getObject());
-
-        return txManager;
     }
 
     @Bean
