@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import static org.mapstruct.MappingConstants.ComponentModel.SPRING;
 import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 //если ставишь @Mapper то можно не писать компонент то что в твоих сущностях есть дто ото большой +, но можно созать дто на запрос/ответ, так легче будет
-а то получается ты CountryOfOrigin маппишь сам в себя 
+//а то получается ты CountryOfOrigin маппишь сам в себя
 @Component
 @Mapper(componentModel = SPRING)
 public interface CountryOfOriginMapper {

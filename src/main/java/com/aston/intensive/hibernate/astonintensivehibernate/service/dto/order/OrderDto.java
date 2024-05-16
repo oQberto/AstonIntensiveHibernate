@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Value;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Value
@@ -17,5 +16,5 @@ public class OrderDto {
     Status status;
     LocalDateTime time;
     UserRepresentationDto userDto;
-    List<ItemRepresentationDto> dtoItems = new ArrayList<>();
+    List<ItemRepresentationDto> dtoItems;
 }
