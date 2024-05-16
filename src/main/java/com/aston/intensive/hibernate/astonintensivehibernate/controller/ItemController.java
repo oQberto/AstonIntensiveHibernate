@@ -21,6 +21,7 @@ import java.util.NoSuchElementException;
 import static java.lang.String.format;
 import static lombok.AccessLevel.PRIVATE;
 //в целом норм но у тебя в самих контроллерах присутствует логика обработки исключений, что наверное не совсем ок 
+
 @RestController
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = PRIVATE)
@@ -41,7 +42,7 @@ public class ItemController {
         return ResponseEntity
                 .ok(itemService.findAll(page, size));
     }
-
+//мне кажется лучше явно указывать какую сущность хочешь вернуть ResponseEntity<?>
     @PatchMapping("/{itemName}")
     public ResponseEntity<?> updateItem(@PathVariable String itemName,
                                         @Validated(UpdateAction.class) @RequestBody ItemCreateEditDto dto,
