@@ -27,7 +27,7 @@ public class ItemServiceImpl implements ItemService {
     ItemMapper itemMapper;
 
     @Override
-    public Optional<ItemRepresentationDto> findById(int id) {
+    public Optional<ItemRepresentationDto> findById(Long id) {
         Optional<ItemRepresentationDto> dto;
 
         try (Session session = sessionFactory.openSession()) {

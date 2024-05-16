@@ -12,7 +12,7 @@ import java.util.Optional;
 public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
-    public Optional<Item> findById(Session session, int id) {
+    public Optional<Item> findById(Session session, Long id) {
         return Optional.ofNullable(
                 session.get(Item.class, id)
         );

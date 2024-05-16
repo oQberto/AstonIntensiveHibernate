@@ -29,7 +29,7 @@ public class ItemController {
     ItemService itemService;
 
     @GetMapping("/{itemId}")
-    public ResponseEntity<ItemRepresentationDto> getItem(@PathVariable int itemId) {
+    public ResponseEntity<ItemRepresentationDto> getItem(@PathVariable Long itemId) {
         return ResponseEntity.ok(
                 itemService.findById(itemId)
                         .orElseThrow(() -> new NoSuchElementException("errors.item.id.not_found" + format("Id %d", itemId)))

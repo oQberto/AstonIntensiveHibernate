@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ItemService {
 
-    Optional<ItemRepresentationDto> findById(int id);
+    Optional<ItemRepresentationDto> findById(Long id);
 
     List<ItemRepresentationDto> findAll(int page, int size);
 
