@@ -22,7 +22,7 @@ public interface ItemMapper {
             @Mapping(target = "countryOfOriginDto", source = "countryOfOrigin")
     })
     ItemRepresentationDto mapToDto(Item item);
-
+// тут прикольная штука nullValuePropertyMappingStrategy но если ты захочешь оставить какоето значение сущность null?
     @Mappings({
             @Mapping(target = "manufacturer", source = "manufacturerDto"),
             @Mapping(target = "countryOfOrigin", source = "countryOfOriginDto")
