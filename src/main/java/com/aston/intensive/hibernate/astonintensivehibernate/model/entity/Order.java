@@ -15,7 +15,7 @@ import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PRIVATE;
-
+// как по мне все ок, видел что в других сущностях ты прописывал каскадные операции, тут мож не надо по логике или забыл
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
