@@ -20,7 +20,7 @@ import java.util.NoSuchElementException;
 
 import static java.lang.String.format;
 import static lombok.AccessLevel.PRIVATE;
-
+//в целом норм но у тебя в самих контроллерах присутствует логика обработки исключений, что наверное не совсем ок 
 @RestController
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = PRIVATE)
@@ -35,7 +35,7 @@ public class ItemController {
                         .orElseThrow(() -> new NoSuchElementException("errors.item.id.not_found" + format("Id %d", itemId)))
         );
     }
-
+//page и size должны быть аннотированы как @RequestParam, чтобы Spring знал, что они являются параметрами запроса.
     @GetMapping
     public ResponseEntity<List<ItemRepresentationDto>> getAllItems(int page, int size) {
         return ResponseEntity
