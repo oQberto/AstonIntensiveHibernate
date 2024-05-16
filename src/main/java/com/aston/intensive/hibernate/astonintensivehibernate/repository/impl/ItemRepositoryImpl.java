@@ -7,10 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+у тебя тут нет обработок исключений проверок на null
+    можно чтонибудь про работу транзакций подумать
 @Repository
 public class ItemRepositoryImpl implements ItemRepository {
-
+методы открывают сессии Hibernate, но не закрывают их
     @Override
     public Optional<Item> findById(Session session, Long id) {
         return Optional.ofNullable(
