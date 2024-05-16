@@ -1,5 +1,5 @@
 --liquibase formatted sql
-
+Прикольео что есть liquibase так сразу понятно что за сущности, можно еще резделить логику на ddl/dml операции и поделить папки на сущности а в changelog указывать просто файлы сущностей
 --changeset alexander_ermakov:1
 CREATE TABLE IF NOT EXISTS manufacturer
 (
