@@ -17,7 +17,8 @@ import java.util.Optional;
 
 import static java.util.Optional.ofNullable;
 import static lombok.AccessLevel.PRIVATE;
-
+// может буду не прав, но я бы работу с сессиями вынес бы в репозиторий, а в сервисе оставил доп логику или с маппингом и проверкой на ошибки. 
+Тут тож важный момент, в работе с сессиями нужно продумать случаи когда нужно откатить транзакцию 
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = PRIVATE)
@@ -59,7 +60,7 @@ public class ItemServiceImpl implements ItemService {
 
         return items;
     }
-
+В методы save и update можно добавить валидацию
     @Override
     public ItemRepresentationDto save(ItemCreateEditDto dto) {
         ItemRepresentationDto savedItem;
